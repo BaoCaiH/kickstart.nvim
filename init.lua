@@ -3,6 +3,7 @@
 --  NOTE: Must happen before plugins are required (otherwise wrong leader will be used)
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
+vim.g.netrw_bufsettings = "noma nomod nu rnu nobl nowrap ro"
 
 -- Install package manager
 --    https://github.com/folke/lazy.nvim
@@ -258,11 +259,7 @@ vim.keymap.set({ "n", "v" }, "<Space>", "<Nop>", { silent = true })
 
 -- Set pv to see netrw
 -- Add also relative line number to netrw
-vim.keymap.set("n", "<leader>pv", function()
-  vim.cmd.Ex()
-  vim.cmd.set("number")
-  vim.cmd.set("relativenumber")
-end)
+vim.keymap.set("n", "<leader>pv", vim.cmd.Ex)
 
 -- Remap for dealing with word wrap
 vim.keymap.set("n", "k", "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
