@@ -257,7 +257,12 @@ vim.o.termguicolors = true
 vim.keymap.set({ "n", "v" }, "<Space>", "<Nop>", { silent = true })
 
 -- Set pv to see netrw
-vim.keymap.set("n", "<leader>pv", vim.cmd.Ex)
+-- Add also relative line number to netrw
+vim.keymap.set("n", "<leader>pv", function()
+  vim.cmd.Ex()
+  vim.cmd.set("number")
+  vim.cmd.set("relativenumber")
+end)
 
 -- Remap for dealing with word wrap
 vim.keymap.set("n", "k", "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
