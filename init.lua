@@ -184,6 +184,9 @@ require("lazy").setup({
     end,
   },
 
+  -- CSV beautify
+  "mechatroner/rainbow_csv",
+
   -- NOTE: Next Step on Your Neovim Journey: Add/Configure additional "plugins" for kickstart
   --       These are some example plugins that I"ve included in the kickstart repository.
   --       Uncomment any of the lines below to enable them.
