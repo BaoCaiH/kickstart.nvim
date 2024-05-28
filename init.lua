@@ -1,6 +1,7 @@
 -- Set <space> as the leader key
 -- See `:help mapleader`
 --  NOTE: Must happen before plugins are required (otherwise wrong leader will be used)
+vim.cmd("language en_US")
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 vim.g.netrw_bufsettings = "noma nomod nu rnu nobl nowrap ro"
@@ -220,6 +221,9 @@ vim.o.softtabstop = 4
 vim.o.shiftwidth = 4
 -- vim.o.expandtab = true
 
+-- Show soft line limit
+vim.o.colorcolumn = "120"
+
 -- Show at least 8 lines at the bottom
 vim.o.scrolloff = 8
 
@@ -318,7 +322,7 @@ vim.keymap.set("n", "<leader>sd", require("telescope.builtin").diagnostics, { de
 require("nvim-treesitter.configs").setup {
   -- Add languages to be installed here that you want installed for treesitter
   ensure_installed = { "c", "cpp", "go", "gdscript", "lua", "python", "rust", "tsx", "javascript", "typescript",
-    "vimdoc", "vim" },
+    "vimdoc", "vim", "zig" },
 
   -- Autoinstall languages that are not installed. Defaults to false (but you can change for yourself!)
   auto_install = false,
@@ -401,9 +405,9 @@ local on_attach = require "custom.plugins.init"["on_attach"]
 local servers = {
   clangd = {},
   gopls = {},
-  pyright = {},
+  pylsp = {},
   -- rust_analyzer = {},
-  -- tsserver = {},
+  tsserver = {},
   html = { filetypes = { "html", "twig", "hbs" } },
 
   lua_ls = {
@@ -412,6 +416,7 @@ local servers = {
       telemetry = { enable = false },
     },
   },
+  zls = {},
 }
 
 -- Setup neovim lua configuration
